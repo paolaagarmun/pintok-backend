@@ -10,7 +10,7 @@ const {
 
 router.get("/", getAllCategories);
 router.get("/category/:id", getOneCategory);
-router.post("/category/", createCategory);
+router.post("/category", createCategory);
 router.delete("/category/:id", deleteCategory);
 
 module.exports = router;

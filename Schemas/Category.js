@@ -4,7 +4,7 @@ const CategorySchema = Schema({
     name: {
         unique: true,
         type: String,
-        reuqired: true,
+        required: true,
         trim: true
     }
 })

@@ -17,6 +17,9 @@ app.use(express.json())
 
 //routes
 app.get("/", (req,res) => res.json({message: "Server works"}))
+app.use("/api/categories", require('./routes/category'));
+app.use("/api/tiktoks", require('./routes/video'))
+app.use("/api/auth", require("./routes/auth"))
 
 //connect to server
 const port = process.env.PORT
