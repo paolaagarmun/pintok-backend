@@ -1,7 +1,8 @@
 const Video = require('../Schemas/Video')
 
 const getAllVideos = async (req, res) => {
-    const videos = await Video.find()
+    const { id } = req.params
+    const videos = await Video.find({category: id})
         .populate("user", "name")
         .populate("category", "name")
     try {

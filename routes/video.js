@@ -10,7 +10,7 @@ const {
 
 
 
-router.get("/", getAllVideos);
+router.get("/:id", getAllVideos);
 router.get("/video/:id", getOneVideo);
 router.post("/video", createVideo);
 router.put("/video/:id", updateVideo);
