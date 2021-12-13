@@ -17,6 +17,17 @@ const generateJwt = (id) => {
     });
 };
 
+const revalidateJwt = async (req, res, next) => {
+    const user = req.user;
+    const token = await generateJwt(user._id)
+    try {
+        return res.json({user, token})
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 module.exports = {
-    generateJwt
+    generateJwt,
+    revalidateJwt
 }
