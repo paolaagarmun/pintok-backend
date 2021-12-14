@@ -28,9 +28,19 @@ const createCategory = async (req, res) => {
     }
 }
 
+const updateCategory = async (req, res) => {
+    const { id } = req.params;
+    const categoryToUpdate = await Category.findByIdAndUpdate(id, req.body, {new:true});
+    try {
+        return res.status(202).json(categoryToUpdate);
+    } catch (error) {
+        return res.status(500).json({message: "Couldn't update category"})
+    }
+}
+
 const deleteCategory = async (req, res) => {
     const { id } = req.params;
-    const categoryToDelete = await Category.findByIdAndDelete(id);
+    await Category.findByIdAndDelete(id);
     try {
         return res.status(203).json({message: "Deleted category successfully"})
     } catch (error) {
@@ -42,5 +52,6 @@ module.exports = {
     getAllCategories,
     getOneCategory,
     createCategory,
-    deleteCategory
+    deleteCategory,
+    updateCategory
 }
