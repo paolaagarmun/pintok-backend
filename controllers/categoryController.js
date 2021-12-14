@@ -1,7 +1,17 @@
 const Category = require('../Schemas/Category')
 
 const getAllCategories = async (req, res) => {
-    const categories = await Category.find();
+    const categories = await Category.find(); 
+    try {
+        return res.status(200).json(categories)
+    } catch (error) {
+        return res.status(500).json({message: "Couldn't get categories"})
+    }
+}
+
+const getAllCategoriesByUser = async (req, res) => {
+    const { id } = req.params
+    const categories = await Category.find({user: id}); // {user: id}
     try {
         return res.status(200).json(categories)
     } catch (error) {
@@ -53,5 +63,6 @@ module.exports = {
     getOneCategory,
     createCategory,
     deleteCategory,
-    updateCategory
+    updateCategory,
+    getAllCategoriesByUser
 }
