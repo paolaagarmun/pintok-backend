@@ -6,7 +6,8 @@ const {
     createCategory, 
     deleteCategory,
     updateCategory,
-    getAllCategoriesByUser
+    getAllCategoriesByUser,
+    categoryImageUpload
 } = require('../controllers/categoryController');
 
 
@@ -14,6 +15,7 @@ router.get("/", getAllCategories);
 router.get("/:id",getAllCategoriesByUser)
 router.get("/category/:id", getOneCategory);
 router.post("/category", createCategory);
+router.post("/category/imageUpload/:id", categoryImageUpload);
 router.delete("/category/:id", deleteCategory);
 router.put("/category/:id", updateCategory);
 
