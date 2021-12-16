@@ -22,7 +22,8 @@ const getAllCategoriesByUser = async (req, res) => {
 
 const getOneCategory = async (req, res) => {
     const { id } = req.params;
-    const category = await Category.findById(id);
+    const category = await Category.findById(id)
+        .populate("user", "name");
     try {
         return res.status(200).json(category)
     } catch (error) {
