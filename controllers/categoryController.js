@@ -2,7 +2,8 @@ const cloudinary = require('cloudinary').v2;
 const Category = require('../Schemas/Category')
 
 const getAllCategories = async (req, res) => {
-    const categories = await Category.find(); 
+    const categories = await Category.find()
+        .populate("user", "name");; 
     try {
         return res.status(200).json(categories)
     } catch (error) {
@@ -12,7 +13,8 @@ const getAllCategories = async (req, res) => {
 
 const getAllCategoriesByUser = async (req, res) => {
     const { id } = req.params
-    const categories = await Category.find({user: id}); // {user: id}
+    const categories = await Category.find({user: id})
+        .populate("user", "name");; // {user: id}
     try {
         return res.status(200).json(categories)
     } catch (error) {
