@@ -21,7 +21,7 @@ const UserSchema = Schema({
         enum: ["USER", "ADMIN"],
         default: "USER"
     },
-    tiktok: {
+    google: {
         type: Boolean,
         default: false
     }
